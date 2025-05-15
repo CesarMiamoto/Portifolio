@@ -1,12 +1,5 @@
 [
-  {
-    "id": "ACID_GLIC",
-    "name": "Ácido Glicólico",
-    "description": "",
-    "categoria_id": "AHA",
-    "ref": ""
-  },
-  {
+{
     "id": "ACID_SAL",
     "name": "Ácido Salicílico",
     "description": "",
@@ -14,51 +7,65 @@
     "ref": ""
   },
   {
+    "id": "ACID_GLIC",
+    "name": "Ácido Glicólico",
+    "description": "Menor ácido dos AHAs com uma molécula pequena que permite uma penetração mais profunda na epiderme, focando assim em esfoliação química.",
+    "categoria_id": "AHA",
+    "ref": ""
+  },
+  {
     "id": "ACID_MAND",
     "name": "Ácido Mandélico",
-    "description": "",
+    "description": "Molécula maior e mais complexa em comparação com outros AHAs, por isso, tem penetração cutânea mais gradual, o que o torna menos irritante, ideal para peles sensíveis e aplicável com outros agentes queratolíticos. Possui ação antimicrobiana e focado em clareamento de manchas e redução de oleosidade.",
     "categoria_id": "AHA",
     "ref": ""
   },
   {
     "id": "ACID_LAT",
     "name": "Ácido Lático",
-    "description": "",
+    "description": "Sua particularidade é o poder de hidratação, já que ele é parte do Fator Natural de Hidratação da nossa pele (grupo de moléculas umectantes primordiais para a retenção de água na pele).",
     "categoria_id": "AHA",
     "ref": ""
   },
   {
     "id": "ACID_MALI",
     "name": "Ácido Málico",
-    "description": "",
+    "description": "Integrante do grupo de ácidos carboxílicos, conhecido como ácido da maçã. Sua molécula maior em comparação aos outros AHAs proporciona uma penetração mais leve, sendo adequado para pele sensíveis. Atua também como umectante, retendo umidade e ajudando a manter a pele hidratada por mais tempo.",
+    "categoria_id": "AHA",
+    "ref": ""
+  },
+  {
+    "id": "ACID_CIT",
+    "name": "Ácido Cítrico",
+    "description": "Ácido orgânico suave com ação leve, cujas principais funções são estabilidade do produto (ajustar o pH) e agente quelante, mas também potencializa os benefícios de outros ingredientes ativos.",
     "categoria_id": "AHA",
     "ref": ""
   },
   {
     "id": "ACID_MALT",
     "name": "Ácido Maltobiônico",
-    "description": "",
+    "description": "Derivado da maltose. Focado em hidratação intensa, ação antioxidante poderosa e proteção do colágeno e elastina, sendo ideal para peles maduras ou tratamentos anti-idade.",
     "categoria_id": "PHA",
     "ref": ""
   },
   {
     "id": "ACID_LACT",
     "name": "Ácido Lactobiônico",
-    "description": "",
+    "description": "Derivado da lactose. Oferece esfoliação e hidratação com foco em cicatrização e regeneração, sendo adequado para peles sensibilizadas ou em recuperação após procedimentos.",
     "categoria_id": "PHA",
     "ref": ""
   },
   {
     "id": "GLUCON",
     "name": "Gluconolactona",
-    "description": "",
+    "description": "Derivada do ácido glucônico. O PHA mais suave, ideal para peles sensíveis, com propriedades calmantes e anti-inflamatórias, além de esfoliação muito leve e hidratante.",
     "categoria_id": "PHA",
     "ref": ""
   },
   {
     "id": "VIT_B3",
     "name": "Niacinamida",
-    "description": "",
+    "description": "Vitamina solúvel em água adequada para todos os tipos de pele de natureza suave e eficaz. Os benefícios incluem o fortalecimento da barreira de umidade da pele e redução de manchas na pele, além de minimizar poros dilatados e suavizar linhas finas e rugas . Uma barreira de umidade forte ajuda a manter os agentes estressores ambientais e a poluição longe da sua pele, enquanto retém a umidade que ajuda a suavizar e preencher a pele.",
     "categoria_id": "VIT",
     "ref": ""
   },
@@ -86,42 +93,42 @@
   {
     "id": "RETINOL",
     "name": "Retinol",
-    "description": "",
+    "description": "O retinol atua ao nível celular, ligando-se a receptores nucleares específicos que regulam a expressão de genes envolvidos na renovação celular e na síntese de componentes dérmicos, como o colágeno. Graças ao seu efeito suave e gradual, o retinol é uma boa escolha para peles sensíveis.",
     "categoria_id": "RET",
     "ref": ""
   },
   {
     "id": "RETINAL",
     "name": "Retinaldeído",
-    "description": "",
+    "description": "O retinal constitui uma fase inicial direta do ácido retinóico. Acelera a regeneração celular e a produção de colagénio quase onze vezes mais do que o retinol.",
     "categoria_id": "RET",
     "ref": ""
   },
   {
     "id": "TRETINOINA",
     "name": "Tretinoína",
-    "description": "",
+    "description": "Forma ativa mais forte que estimula a síntese de colágeno, aumenta a circulação local e acelera a renovação celular, melhorando a firmeza e a cicatrização da pele, além de diminuir a oleosidade.",
     "categoria_id": "RET",
     "ref": ""
   },
   {
     "id": "ISOTRETINOINA",
     "name": "Isotretinoína",
-    "description": "",
+    "description": "Forma ativa mais forte e indicado para o tratamento da acne grave com administração de medicação por via oral, potenciais efeitos sistêmicos graves, como teratogenicidade, alterações hepáticas e secura severa de mucosas. Age reduzindo a atividade e diminuindo o tamanho das glândulas produtoras de sebo.",
     "categoria_id": "RET",
     "ref": ""
   },
   {
     "id": "ACITRETINA",
     "name": "Acitretina",
-    "description": "",
+    "description": "Altamente teratogênica, e suas propriedades lipofílicas fazem com que tenha uma meia-vida longa, dificultando sua eliminação do corpo. Os efeitos colaterais incluem secura de pele e mucosas e risco aumentado de hepatotoxicidade.",
     "categoria_id": "RET",
     "ref": ""
   },
   {
     "id": "ADAPALENO",
     "name": "Adapaleno",
-    "description": "",
+    "description": "Retinoide tópico comumente usado no tratamento de acne leve a moderada. Ele tem menor potencial de irritação e é mais estável sob luz e oxigênio, o que o torna ideal para uso prolongado.",
     "categoria_id": "RET",
     "ref": ""
   },
@@ -191,21 +198,21 @@
   {
     "id": "ACID_FERU",
     "name": "Ácido Ferúlico",
-    "description": "",
+    "description": "Um ácido hidroxicinâmico que devido a sua estrutura permite que ele atue como um potente antioxidante, neutralizando radicais livres e prevenindo danos oxidativos.",
     "categoria_id": "",
     "ref": ""
   },
   {
     "id": "ACID_KOJI",
     "name": "Ácido Kójico",
-    "description": "",
+    "description": "Um metabólito natural produzido por fungos utilizado como agente clareador da pele devido à sua capacidade de inibir a enzima tirosinase, essencial na biossíntese da melanina.",
     "categoria_id": "",
     "ref": ""
   },
   {
     "id": "ACID_SUCC",
     "name": "Ácido Succicínico",
-    "description": "",
+    "description": "Um ácido dicarboxílico fraco com baixo nível de dissociação em soluções aquosas. Derivado do ciclo do ácido cítrico. Propriedades antimicrobianas, ajudando no controle de bactérias causadoras de acne e atua na renovação celular.",
     "categoria_id": "",
     "ref": ""
   },
