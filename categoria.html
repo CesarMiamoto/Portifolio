@@ -186,7 +186,7 @@
           div.className = "componente";
           div.id = compId;
           div.innerHTML = `
-            <h2><a href="componente.html?nome=${encodeURIComponent(comp.name)}">${comp.name}</a></h2>
+            <h2><a href="componente.html?nome=${encodeURIComponent(comp.id)}">${comp.name}</a></h2>
             <p>${comp.description || "Descrição não disponível."}</p>
           `;
           container.appendChild(div);
