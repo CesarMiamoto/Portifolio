@@ -144,7 +144,7 @@
 
         componentesDaCategoria.forEach(comp => {
           const link = document.createElement('a');
-          link.href = `componente.html?id=${encodeURIComponent(comp.id)}`;
+          link.href = `componente.html?comp=${encodeURIComponent(comp.id)}`;
           link.textContent = comp.name;
           sidebar.appendChild(link);
         });
