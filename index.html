@@ -148,7 +148,7 @@
           card.id = id;
 
           card.innerHTML = `
-            <h2><a href="categoria.html?cat=${encodeURIComponent(categoria.name)}">${categoria.name}</a></h2>
+            <h2><a href="categoria.html?cat=${encodeURIComponent(categoria.id)}">${categoria.name}</a></h2>
             <p>${categoria.description || 'Descrição não disponível.'}</p>
           `;
 
