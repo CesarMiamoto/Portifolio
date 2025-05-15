@@ -63,6 +63,15 @@
       max-width: 900px;
       flex: 1;
     }
+    .categoria-descricao {
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 30px;
+      background: #ffffffcc;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
     .componente {
       background: #fff;
       border-radius: 12px;
@@ -105,12 +114,11 @@
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
       <a href="index.html">Página Inicial</a>
-      <!-- Categoria e componentes serão inseridos aqui -->
     </div>
 
     <!-- Conteúdo -->
     <div class="components" id="componentesContainer">
-      <!-- Componentes serão inseridos aqui -->
+      <!-- Descrição e componentes serão inseridos aqui -->
     </div>
   </div>
 
@@ -128,7 +136,6 @@
         const categorias = await resCategorias.json();
         const componentes = await resComponentes.json();
 
-        // Encontrar categoria atual
         const categoria = categorias.find(cat => String(cat.id) === categoriaId);
 
         const titulo = document.getElementById("categoriaTitulo");
@@ -144,7 +151,7 @@
         // Atualiza título
         titulo.textContent = categoria.name;
 
-        // Atualiza sidebar
+        // Adiciona nome da categoria à sidebar
         const titleDiv = document.createElement("div");
         titleDiv.className = "category-title";
         const categoryLink = document.createElement("a");
@@ -155,22 +162,29 @@
         titleDiv.appendChild(categoryLink);
         sidebar.appendChild(titleDiv);
 
+        // Adiciona descrição da categoria antes dos componentes
+        const descricaoDiv = document.createElement("div");
+        descricaoDiv.className = "categoria-descricao";
+        descricaoDiv.textContent = categoria.description || "Sem descrição.";
+        container.appendChild(descricaoDiv);
+
         // Filtra componentes da categoria
         const componentesDaCategoria = componentes.filter(c => c.categoria_id === categoriaId);
 
-        // Preenche sidebar com os componentes
+        // Adiciona links de rolagem na sidebar e os retângulos dos componentes
         componentesDaCategoria.forEach((comp, index) => {
+          const compId = `comp${index + 1}`;
+
+          // Sidebar
           const link = document.createElement("a");
-          link.href = `componente.html?nome=${encodeURIComponent(comp.name)}`;
+          link.href = `#${compId}`;
           link.textContent = comp.name;
           sidebar.appendChild(link);
-        });
 
-        // Preenche área principal com os retângulos dos componentes
-        componentesDaCategoria.forEach((comp, index) => {
+          // Retângulo
           const div = document.createElement("div");
           div.className = "componente";
-          div.id = `comp${index + 1}`;
+          div.id = compId;
           div.innerHTML = `
             <h2><a href="componente.html?nome=${encodeURIComponent(comp.name)}">${comp.name}</a></h2>
             <p>${comp.description || "Descrição não disponível."}</p>
