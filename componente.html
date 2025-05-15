@@ -98,11 +98,11 @@
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
-    const componentId = urlParams.get("c");
+    const componentId = urlParams.get("comp");
 
-    const componentNameEl = document.getElementById('componentName');
-    const componentDetailDiv = document.getElementById('componentDetail');
-    const sidebar = document.getElementById('sidebar');
+    const componentNameEl = document.getElementById("componentName");
+    const componentDetailDiv = document.getElementById("componentDetail");
+    const sidebar = document.getElementById("sidebar");
 
     async function carregarComponente() {
       try {
@@ -115,11 +115,11 @@
         const componentes = await resComponentes.json();
 
         // Encontrar o componente pelo ID
-        const componente = componentes.find(c => c.id === componentId);
+        const componente = componentes.find(comp => comp.id === componentId);
 
         if (!componente) {
-          componentNameEl.textContent = 'Componente não encontrado';
-          componentDetailDiv.innerHTML = 'Desculpe, não encontramos detalhes para este componente.';
+          componentNameEl.textContent = "Componente não encontrado";
+          componentDetailDiv.innerHTML = "Desculpe, não encontramos detalhes para este componente.";
           sidebar.innerHTML = `<a href="index.html">Página Inicial</a>`;
           return;
         }
@@ -131,7 +131,7 @@
         componentNameEl.textContent = componente.name;
         componentDetailDiv.innerHTML = `
           <h2>Descrição:</h2>
-          <p>${componente.description || 'Descrição não disponível.'}</p>
+          <p>${componente.description || "Descrição não disponível."}</p>
         `;
 
         // Preencher sidebar
@@ -140,19 +140,19 @@
           <a href="categoria.html?cat=${encodeURIComponent(categoria.id)}" class="category-title">${categoria.name}</a>
         `;
 
-        const componentesDaCategoria = componentes.filter(c => c.categoria_id === componente.categoria_id);
+        const componentesDaCategoria = componentes.filter(comp => comp.categoria_id === componente.categoria_id);
 
-        componentesDaCategoria.forEach(c => {
+        componentesDaCategoria.forEach(comp => {
           const link = document.createElement('a');
           link.href = `componente.html?id=${encodeURIComponent(c.id)}`;
-          link.textContent = c.name;
+          link.textContent = comp.name;
           sidebar.appendChild(link);
         });
 
       } catch (error) {
         console.error("Erro ao carregar dados:", error);
-        componentNameEl.textContent = 'Erro ao carregar componente';
-        componentDetailDiv.innerHTML = 'Ocorreu um erro ao tentar acessar o banco de dados.';
+        componentNameEl.textContent = "Erro ao carregar componente";
+        componentDetailDiv.innerHTML = "Ocorreu um erro ao tentar acessar o banco de dados.";
         sidebar.innerHTML = `<a href="index.html">Página Inicial</a>`;
       }
     }
