@@ -98,7 +98,7 @@
 
   <script>
     const params = new URLSearchParams(window.location.search);
-    const componentName = params.get('nome');
+    const componentId = params.get('id');
 
     const componentNameEl = document.getElementById('componentName');
     const componentDetailDiv = document.getElementById('componentDetail');
@@ -114,7 +114,7 @@
         const categorias = await resCategorias.json();
         const componentes = await resComponentes.json();
 
-        // Encontrar o componente
+        // Encontrar o componente pelo ID
         const componente = componentes.find(c => c.id === componentId);
 
         if (!componente) {
@@ -144,7 +144,7 @@
 
         componentesDaCategoria.forEach(c => {
           const link = document.createElement('a');
-          link.href = `componente.html?nome=${encodeURIComponent(c.id)}`;
+          link.href = `componente.html?id=${encodeURIComponent(c.id)}`;
           link.textContent = c.name;
           sidebar.appendChild(link);
         });
