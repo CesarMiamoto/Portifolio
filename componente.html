@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detalhes do Componente</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #e0c3fc, #d0e7ff);
+      color: #fff;
+      display: flex;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      background: #7a42f4;
+      padding: 20px;
+      width: 220px;
+      height: 100vh;
+      box-sizing: border-box;
+      overflow-y: auto;
+      color: #fff;
+    }
+
+    .sidebar a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      margin: 10px 0;
+      font-size: 1rem;
+    }
+
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+
+    .sidebar .category-title {
+      font-size: 1.1rem;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-weight: bold;
+      border-bottom: 1px solid #fff;
+      padding-bottom: 5px;
+    }
+
+    .content {
+      padding: 20px;
+      flex: 1;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #4b0082;
+    }
+
+    .component-detail {
+      background: #ffffffcc;
+      color: #4b0082;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .component-detail h2 {
+      font-size: 1.8em;
+    }
+
+    .component-detail p {
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <!-- Conteúdo será gerado dinamicamente -->
+  </div>
+
+  <!-- Conteúdo principal -->
+  <div class="content">
+    <h1 id="componentName">Nome do Componente</h1>
+
+    <div class="component-detail" id="componentDetail">
+      <p>Carregando descrição...</p>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const componentName = params.get('nome');
+
+    const componentNameEl = document.getElementById('componentName');
+    const componentDetailDiv = document.getElementById('componentDetail');
+    const sidebar = document.getElementById('sidebar');
+
+    async function carregarComponente() {
+      try {
+        const [resCategorias, resComponentes] = await Promise.all([
+          fetch("categoria.json"),
+          fetch("componente.json")
+        ]);
+
+        const categorias = await resCategorias.json();
+        const componentes = await resComponentes.json();
+
+        // Encontrar o componente
+        const componente = componentes.find(c => c.name === componentName);
+
+        if (!componente) {
+          componentNameEl.textContent = 'Componente não encontrado';
+          componentDetailDiv.innerHTML = 'Desculpe, não encontramos detalhes para este componente.';
+          sidebar.innerHTML = `<a href="index.html">Página Inicial</a>`;
+          return;
+        }
+
+        // Encontrar a categoria do componente
+        const categoria = categorias.find(cat => cat.id === componente.categoria_id);
+
+        // Atualizar conteúdo principal
+        componentNameEl.textContent = componente.name;
+        componentDetailDiv.innerHTML = `
+          <h2>Descrição:</h2>
+          <p>${componente.description || 'Descrição não disponível.'}</p>
+        `;
+
+        // Preencher sidebar
+        sidebar.innerHTML = `
+          <a href="index.html">Página Inicial</a>
+          <a href="categoria.html?cat=${encodeURIComponent(categoria.id)}" class="category-title">${categoria.name}</a>
+        `;
+
+        const componentesDaCategoria = componentes.filter(c => c.categoria_id === componente.categoria_id);
+
+        componentesDaCategoria.forEach(c => {
+          const link = document.createElement('a');
+          link.href = `componente.html?nome=${encodeURIComponent(c.name)}`;
+          link.textContent = c.name;
+          sidebar.appendChild(link);
+        });
+
+      } catch (error) {
+        console.error("Erro ao carregar dados:", error);
+        componentNameEl.textContent = 'Erro ao carregar componente';
+        componentDetailDiv.innerHTML = 'Ocorreu um erro ao tentar acessar o banco de dados.';
+        sidebar.innerHTML = `<a href="index.html">Página Inicial</a>`;
+      }
+    }
+
+    carregarComponente();
+  </script>
+
+</body>
+</html>
