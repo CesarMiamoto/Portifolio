@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dicionário de Skincare</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #f5f5f5;
+      color: #000;
+    }
+
+    /* Faixa de título */
+    .header {
+      background: linear-gradient(90deg, #cce5ff, #e0ccff);
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      margin: 0;
+      color: #000;
+      font-size: 2.5rem;
+    }
+
+    .main {
+      display: flex;
+    }
+
+    /* Sidebar fixa */
+    .sidebar {
+      position: sticky;
+      top: 0;
+      background: #7a42f4;
+      padding: 20px;
+      width: 220px;
+      height: 100vh;
+      box-sizing: border-box;
+      overflow-y: auto;
+      color: #fff;
+    }
+
+    .sidebar h2 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .sidebar a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      margin: 10px 0;
+      font-size: 1rem;
+    }
+
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+
+    .content {
+      padding: 20px;
+      flex: 1;
+    }
+
+    .categoria {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      padding: 20px;
+      margin: 30px 0;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .categoria:hover {
+      transform: translateY(-5px);
+    }
+
+    .categoria h2 {
+      margin: 0;
+      color: #7a42f4;
+      font-size: 1.5rem;
+    }
+
+    .categoria h2 a {
+      color: #7a42f4;
+      text-decoration: none;
+    }
+
+    .categoria h2 a:hover {
+      text-decoration: underline;
+    }
+
+    .categoria p {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #333;
+      white-space: pre-line;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Dicionário de Skincare</h1>
+  </div>
+
+  <div class="main">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>Categorias</h2>
+      <div id="sidebar-links">
+        <!-- Links das categorias virão aqui -->
+      </div>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="content" id="categoria-container">
+      <!-- Retângulos das categorias virão aqui -->
+    </div>
+  </div>
+
+  <script>
+    async function carregarCategorias() {
+      try {
+        const resposta = await fetch('categoria.json');
+        const categorias = await resposta.json();
+
+        const sidebar = document.getElementById('sidebar-links');
+        const container = document.getElementById('categoria-container');
+
+        categorias.forEach(categoria => {
+          const id = `categoria-${categoria.id || categoria.name.replace(/\s+/g, '-')}`;
+
+          // Sidebar
+          const link = document.createElement('a');
+          link.href = `#${id}`;
+          link.textContent = categoria.name;
+          sidebar.appendChild(link);
+
+          // Retângulo da categoria
+          const card = document.createElement('div');
+          card.className = 'categoria';
+          card.id = id;
+
+          card.innerHTML = `
+            <h2><a href="categoria.html?cat=${encodeURIComponent(categoria.name)}">${categoria.name}</a></h2>
+            <p>${categoria.description || 'Descrição não disponível.'}</p>
+          `;
+
+          container.appendChild(card);
+        });
+      } catch (erro) {
+        console.error('Erro ao carregar o JSON:', erro);
+        document.getElementById('categoria-container').innerHTML = '<p>Erro ao carregar categorias.</p>';
+      }
+    }
+
+    carregarCategorias();
+  </script>
+
+</body>
+</html>
