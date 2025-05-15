@@ -1,0 +1,247 @@
+[
+  {
+    "id": "ACID_GLIC",
+    "name": "Ácido Glicólico",
+    "description": "",
+    "categoria_id": "AHA",
+    "ref": ""
+  },
+  {
+    "id": "ACID_SAL",
+    "name": "Ácido Salicílico",
+    "description": "",
+    "categoria_id": "BHA",
+    "ref": ""
+  },
+  {
+    "id": "ACID_MAND",
+    "name": "Ácido Mandélico",
+    "description": "",
+    "categoria_id": "AHA",
+    "ref": ""
+  },
+  {
+    "id": "ACID_LAT",
+    "name": "Ácido Lático",
+    "description": "",
+    "categoria_id": "AHA",
+    "ref": ""
+  },
+  {
+    "id": "ACID_MALI",
+    "name": "Ácido Málico",
+    "description": "",
+    "categoria_id": "AHA",
+    "ref": ""
+  },
+  {
+    "id": "ACID_MALT",
+    "name": "Ácido Maltobiônico",
+    "description": "",
+    "categoria_id": "PHA",
+    "ref": ""
+  },
+  {
+    "id": "ACID_LACT",
+    "name": "Ácido Lactobiônico",
+    "description": "",
+    "categoria_id": "PHA",
+    "ref": ""
+  },
+  {
+    "id": "GLUCON",
+    "name": "Gluconolactona",
+    "description": "",
+    "categoria_id": "PHA",
+    "ref": ""
+  },
+  {
+    "id": "VIT_B3",
+    "name": "Niacinamida",
+    "description": "",
+    "categoria_id": "VIT",
+    "ref": ""
+  },
+  {
+    "id": "VIT_B5",
+    "name": "Pantenol",
+    "description": "",
+    "categoria_id": "VIT",
+    "ref": ""
+  },
+  {
+    "id": "VIT_C",
+    "name": "Vitamina C",
+    "description": "",
+    "categoria_id": "VIT",
+    "ref": ""
+  },
+  {
+    "id": "VIT_E",
+    "name": "Alfa Tocoferol",
+    "description": "",
+    "categoria_id": "VIT",
+    "ref": ""
+  },
+  {
+    "id": "RETINOL",
+    "name": "Retinol",
+    "description": "",
+    "categoria_id": "RET",
+    "ref": ""
+  },
+  {
+    "id": "RETINAL",
+    "name": "Retinaldeído",
+    "description": "",
+    "categoria_id": "RET",
+    "ref": ""
+  },
+  {
+    "id": "TRETINOINA",
+    "name": "Tretinoína",
+    "description": "",
+    "categoria_id": "RET",
+    "ref": ""
+  },
+  {
+    "id": "ISOTRETINOINA",
+    "name": "Isotretinoína",
+    "description": "",
+    "categoria_id": "RET",
+    "ref": ""
+  },
+  {
+    "id": "ACITRETINA",
+    "name": "Acitretina",
+    "description": "",
+    "categoria_id": "RET",
+    "ref": ""
+  },
+  {
+    "id": "ADAPALENO",
+    "name": "Adapaleno",
+    "description": "",
+    "categoria_id": "RET",
+    "ref": ""
+  },
+  {
+    "id": "ACID_HIAL",
+    "name": "Ácido Hialurônico",
+    "description": "",
+    "categoria_id": "HID",
+    "ref": ""
+  },
+  {
+    "id": "GLICERIN",
+    "name": "Glicerina",
+    "description": "",
+    "categoria_id": "HID",
+    "ref": ""
+  },
+  {
+    "id": "TREALOSE",
+    "name": "Trealose",
+    "description": "",
+    "categoria_id": "HID",
+    "ref": ""
+  },
+  {
+    "id": "ESQUALANO",
+    "name": "Esqualano",
+    "description": "",
+    "categoria_id": "HID",
+    "ref": ""
+  },
+  {
+    "id": "CERAMIDA",
+    "name": "Ceramida",
+    "description": "",
+    "categoria_id": "HID",
+    "ref": ""
+  },
+  {
+    "id": "MANT_KARI",
+    "name": "Manteiga de Karité",
+    "description": "",
+    "categoria_id": "HID",
+    "ref": ""
+  },
+  {
+    "id": "LANOLINA",
+    "name": "Lanolina",
+    "description": "",
+    "categoria_id": "HID",
+    "ref": ""
+  },
+  {
+    "id": "VASELINA",
+    "name": "Vaselina",
+    "description": "",
+    "categoria_id": "HID",
+    "ref": ""
+  },
+  {
+    "id": "ACID_AZEL",
+    "name": "Ácido Azelaico",
+    "description": "",
+    "categoria_id": "",
+    "ref": ""
+  },
+  {
+    "id": "ACID_FERU",
+    "name": "Ácido Ferúlico",
+    "description": "",
+    "categoria_id": "",
+    "ref": ""
+  },
+  {
+    "id": "ACID_KOJI",
+    "name": "Ácido Kójico",
+    "description": "",
+    "categoria_id": "",
+    "ref": ""
+  },
+  {
+    "id": "ACID_SUCC",
+    "name": "Ácido Succicínico",
+    "description": "",
+    "categoria_id": "",
+    "ref": ""
+  },
+  {
+    "id": "ACID_TRANEX",
+    "name": "Ácido Tranexâmico",
+    "description": "",
+    "categoria_id": "",
+    "ref": ""
+  },
+  {
+    "id": "ALFA_ARBUTIN",
+    "name": "Alfa-Arbutin",
+    "description": "",
+    "categoria_id": "",
+    "ref": ""
+  },
+  {
+    "id": "ALFA_BISA",
+    "name": "Alfa-Bisabolol",
+    "description": "",
+    "categoria_id": "",
+    "ref": ""
+  },
+  {
+    "id": "BROME",
+    "name": "Bromelina",
+    "description": "",
+    "categoria_id": "",
+    "ref": ""
+  },
+  {
+    "id": "PAPA",
+    "name": "Papaína",
+    "description": "",
+    "categoria_id": "",
+    "ref": ""
+  }
+]

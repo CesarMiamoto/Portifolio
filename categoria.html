@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Categoria - Dicionário de Skincare</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #f5f5f5;
+      color: #000;
+    }
+    .header {
+      background: linear-gradient(90deg, #cce5ff, #e0ccff);
+      padding: 30px 20px;
+      text-align: center;
+    }
+    .header h1 {
+      margin: 0;
+      color: #4b0082;
+      font-size: 2.5rem;
+    }
+    .main {
+      display: flex;
+    }
+    .sidebar {
+      position: sticky;
+      top: 0;
+      align-self: flex-start;
+      background: #7a42f4;
+      padding: 20px;
+      width: 200px;
+      height: 100vh;
+      box-sizing: border-box;
+      overflow-y: auto;
+      color: #fff;
+    }
+    .sidebar a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      margin: 10px 0;
+      font-size: 1rem;
+    }
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+    .sidebar .category-title {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-weight: bold;
+      border-bottom: 1px solid #fff;
+      padding-bottom: 5px;
+    }
+    .components {
+      margin: 0 auto;
+      padding: 20px;
+      max-width: 900px;
+      flex: 1;
+    }
+    .componente {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      padding: 20px;
+      margin: 40px 0;
+      scroll-margin-top: 100px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .componente:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+    .componente h2 {
+      margin: 0;
+      color: #7a42f4;
+      font-size: 1.5rem;
+    }
+    .componente p {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #333;
+    }
+    .componente h2 a {
+      text-decoration: none;
+      color: #7a42f4;
+    }
+    .componente h2 a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1 id="categoriaTitulo">Carregando categoria...</h1>
+  </div>
+
+  <div class="main">
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <a href="index.html">Página Inicial</a>
+      <!-- Categoria e componentes serão inseridos aqui -->
+    </div>
+
+    <!-- Conteúdo -->
+    <div class="components" id="componentesContainer">
+      <!-- Componentes serão inseridos aqui -->
+    </div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoriaId = urlParams.get("cat");
+
+    async function carregarDados() {
+      try {
+        const [resCategorias, resComponentes] = await Promise.all([
+          fetch("categoria.json"),
+          fetch("componente.json")
+        ]);
+
+        const categorias = await resCategorias.json();
+        const componentes = await resComponentes.json();
+
+        // Encontrar categoria atual
+        const categoria = categorias.find(cat => cat.id === categoriaId);
+
+        const titulo = document.getElementById("categoriaTitulo");
+        const sidebar = document.getElementById("sidebar");
+        const container = document.getElementById("componentesContainer");
+
+        if (!categoria) {
+          titulo.textContent = "Categoria não encontrada";
+          container.innerHTML = "<p>Essa categoria não existe no banco de dados.</p>";
+          return;
+        }
+
+        // Atualiza título
+        titulo.textContent = categoria.name;
+
+        // Atualiza sidebar
+        const titleDiv = document.createElement("div");
+        titleDiv.className = "category-title";
+        const categoryLink = document.createElement("a");
+        categoryLink.href = `categoria.html?cat=${categoria.id}`;
+        categoryLink.textContent = categoria.name;
+        categoryLink.style.color = "#fff";
+        categoryLink.style.textDecoration = "none";
+        titleDiv.appendChild(categoryLink);
+        sidebar.appendChild(titleDiv);
+
+        // Filtra componentes da categoria
+        const componentesDaCategoria = componentes.filter(c => c.categoria_id === categoriaId);
+
+        // Preenche sidebar com os componentes
+        componentesDaCategoria.forEach((comp, index) => {
+          const link = document.createElement("a");
+          link.href = `componente.html?nome=${encodeURIComponent(comp.name)}`;
+          link.textContent = comp.name;
+          sidebar.appendChild(link);
+        });
+
+        // Preenche área principal com os retângulos dos componentes
+        componentesDaCategoria.forEach((comp, index) => {
+          const div = document.createElement("div");
+          div.className = "componente";
+          div.id = `comp${index + 1}`;
+          div.innerHTML = `
+            <h2><a href="componente.html?nome=${encodeURIComponent(comp.name)}">${comp.name}</a></h2>
+            <p>${comp.description || "Descrição não disponível."}</p>
+          `;
+          container.appendChild(div);
+        });
+
+      } catch (error) {
+        console.error("Erro ao carregar dados:", error);
+        document.getElementById("categoriaTitulo").textContent = "Erro ao carregar dados";
+      }
+    }
+
+    carregarDados();
+  </script>
+
+</body>
+</html>
